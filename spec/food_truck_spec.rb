@@ -4,6 +4,8 @@ require './lib/item'
 RSpec.describe FoodTruck do
 
   before do
+    #will remove this hook IF I have time or IF I find a conflict in future iterations
+    #currently it appears there are no conflicts though, so keeping now for speed
     @food_truck1 = FoodTruck.new('Rocky Mountain Pies')
     @food_truck2 = FoodTruck.new("Ba-Nom-a-Nom")
     @food_truck3 = FoodTruck.new("Palisade Peach Shack")
@@ -65,6 +67,13 @@ RSpec.describe FoodTruck do
       @food_truck1.stock(@item1, 25)
       @food_truck1.stock(@item2, 12)
       expect(@food_truck1.item_sold?(@item1)).to eq(true)
+    end
+  end
+  describe '#names_of_items_sold' do
+    it 'returns and array of the names of all the items sold' do
+      @food_truck1.stock(@item1, 25)
+      @food_truck1.stock(@item2, 12)
+      expect(@food_truck1.names_of_items_sold).to eq(["Peach Pie (Slice)", "Apple Pie (Slice)"])
     end
   end
 end

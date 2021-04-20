@@ -31,6 +31,12 @@ class FoodTruck
     end
   end
 
+  def names_of_items_sold
+    @inventory.map do |inventory_item|
+      inventory_item.first.name
+    end
+  end
+
   def item_sold?(item)
     items_sold.include?(item)
   end
